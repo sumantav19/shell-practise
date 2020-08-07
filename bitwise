@@ -1,0 +1,10 @@
+read -p "a" a
+read -p "b" b
+bitwiseandab=$(( a&b ))
+echo "bitwiseandab: $bitwiseandab "
+bitwiseorab=$(( a|b ))
+echo "bitwiseorab: $bitwiseorab"
+bitwisexorab=$(( a^b))
+echo "bitwisexorab: $bitwisexorab"
+bitwisecompa=$(( ~a ))
+echo "bitwisecompa: $bitwisecompa"

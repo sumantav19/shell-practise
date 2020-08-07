@@ -1,0 +1,13 @@
+p="4+5"
+echo $p #=> will result in "4+5"
+declare -i p # p can contain only intergers
+p="4+5" # quotes are required
+echo $p #=> will result in 9 as it evaluates the string as expression
+p=5+5 #=> this should throw error but evaluating
+echo $p
+
+p=test 
+echo $p #=> should be set to 0
+declare +i p #=> this will remove integer contraint from varible
+p=test
+echo $p 

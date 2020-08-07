@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# compare the number of files in directories
+
+# need two dir name
+if [[ 2 -ne $# ]]; then
+    echo "need exactly two directory name"
+    exit 1
+fi
+
+dir1=$1
+dir2=$2
+
+if [[ ! -d $dir1 ]]; then
+    echo "Not a directory"
+    exit 1
+fi
+
+if [[ ! -d $dir2 ]]; then
+    echo "Not a diretory"
+    exit 1
+fi
+
+count_1=$(ls -A1 "${dir1}" | wc -l)
+count_2=$(ls -A1 "${dir2}" | wc -l)
+
+
+if [[ $count_1 -gt $count_2 ]]; then
+    echo "${dir1} has more files"
+elif [[ $count_1 -eq $count_2 ]]; then
+    echo "${dir1} and ${dir2} has equal files"
+else
+    echo "${dir2} has more files"
+fi
+
+exit 0

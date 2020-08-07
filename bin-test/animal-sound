@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# return animal sound
+# case 
+
+case $1 in
+    cat)
+        echo "meow";; # double semicolon is break 
+    dog)
+        echo "woof";;
+    cow)
+        echo "moo";;
+    *)
+        echo "unknown animal";;
+esac
+exit 0
+

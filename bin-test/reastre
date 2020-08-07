@@ -1,0 +1,78 @@
+#!/bin/bash
+# print ascii tree
+# recursive
+declare -i count
+#read levels
+
+height=63
+max_v_height=16
+width=100
+first_height=32
+max_left_indent=49
+max_right_indent=50
+
+# print_v() {
+#     level=$1
+
+#     height=$(( max_v_height / level ))
+#     max_indent=$(( 1 + 2 * ( max_v_height / level - 1) ))
+#     for(( i = 0; i < height ; i++ )); do
+#         mid_indent=$(( max_indent - i * 2 ))
+#         left_indent=$(( max_left_indent - (max_v_height / level * 2 ) - 1 + i  ))
+#         right_indent=$(( max_left_indent - (max_v_height / level * 2 ) - 1 + i ))
+#         expr=( "\"-\"{1..${left_indent}}" "1" "\"-\"{1..${mid_indent}}" "1" "\"-\"{1..${right_indent}}")
+#         eval printf "%c" ${expr[*]}
+#         echo ""
+#     done
+    
+# }
+
+print_straight() {
+    top_indent=$(( height - ))
+    for(( i = 0; i <    ))
+    eval printf "%c" "-"{1..100} 
+}
+
+line_height() {
+    echo $(( height - first_height ))
+}
+
+print_v() {
+    level=$1
+
+    height=$(( max_v_height / level ))
+    max_indent=$(( 1 + 2 * ( max_v_height / level - 1) ))
+    for(( i = 0; i < height ; i++ )); do
+        mid_indent=$(( max_indent - i * 2 ))
+        left_indent=$(( max_left_indent - (max_v_height / level * 2 ) - 1 + i  ))
+        right_indent=$(( max_left_indent - (max_v_height / level * 2 ) - 1 + i ))
+        expr=( "\"-\"{1..${left_indent}}" "1" "\"-\"{1..${mid_indent}}" "1" "\"-\"{1..${right_indent}}")
+        eval printf "%c" ${expr[*]}
+        echo ""
+    done
+    
+}
+
+print_i() {
+    level=$1
+
+    height=$(( max_v_height / level ))
+    # max_indent=$(( 1 + 2 * ( max_v_height / level - 1) ))
+    left_indent=$(( max_left_indent - (max_v_height / level * 2 ) - 1 ))
+    right_indent=$(( max_left_indent - (max_v_height / level * 2 ) - 1 ))
+    for(( i = 0; i < height ; i++ )); do
+        expr=( "\"-\"{1..${left_indent}}" "1" "\"-\"{1..${right_indent}}")
+        eval printf "%c" ${expr[*]}
+        echo ""
+    done
+}
+
+print() {
+    lines=$(line_height 1)
+    print_straight 1
+    echo ""
+    print_v 1
+    print_i 1
+}
+
+print

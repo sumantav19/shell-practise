@@ -1,0 +1,40 @@
+#!/bin/bash
+# script to create executalbe file for command
+# following pluralsight tutorial
+
+commandname=$1
+bindir="${HOME}/bin-test"
+filename="${bindir}/${commandname}"
+
+# check if script name provided
+if [[ ! $commandname ]]; then
+    echo "Script name not provided"
+    exit 1
+fi
+
+# check if command with same name exist
+if type "${commandname}"; then
+    echo "Command with name ${commandname} exist"
+    exit 1
+fi
+
+# check if bin directory  exist else create
+if [[ ! -d $bindir ]]; then
+    if mkdir "${bindir}"; then
+        echo "created ${bindir}"
+    else
+        echo "error creating ${bindir}"
+        exit 1
+    fi
+fi
+
+# create file 
+touch "${filename}"
+
+# add permission
+chmod u+x "${filename}"
+
+# add bin bash to the file
+echo "#!/bin/bash" >> "${filename}"
+
+exit 0

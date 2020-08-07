@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo -n "Are you sure (Y/N)?" # -n suppress new line character
+while [[ ! $answered ]]; do
+    read -r -n 1 -s  answer
+    # -s do not echo input comming out of terminal also used for password input
+    # -n will stop read at one character
+    # -r do not allow blackslashe to escape any characters
+    if [[ $answer = [Yy] ]]; then
+        answered=yes
+    elif [[ $answer = [Nn] ]]; then
+        answered=no
+    fi
+done
+
+printf "\n%s\n" $answered
+
+exit 0

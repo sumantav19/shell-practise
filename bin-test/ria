@@ -1,0 +1,11 @@
+#!/bin/bash
+# read lines and push to array
+line=''
+while read -a reply;do
+    line+=" ${reply}"
+done
+echo $line
+#slice
+wordarr=( $line )
+
+echo ${wordarr[*]:3:2}

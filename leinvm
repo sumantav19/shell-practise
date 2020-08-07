@@ -1,0 +1,16 @@
+#!/bin/sh
+
+version=$1
+LEIN_PATH="${HOME}/bin"
+if [ -z $1 ]
+then
+    echo "no default supported"
+elif [[ $1 = 9 ]]; then
+    cp ${LEIN_PATH}/lein-2.9.1 ${LEIN_PATH}/lein
+elif [[ $1 = 6  ]]; then
+    cp  ${LEIN_PATH}/lein-2.6.1 ${LEIN_PATH}/lein
+else
+    echo "doesn't exist"
+fi
+
+

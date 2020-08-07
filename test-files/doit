@@ -1,0 +1,22 @@
+#!/bin/bash
+doit(){
+while read -r line; do
+    externalids="$line"
+    #echo "$externalids"
+    declare url="http://localhost:2346/internal/users?external-ids=${externalids}"
+    #echo "$url"
+    declare -a RESP 
+    RESP=$(curl -XGET -H 'X-BK-AUTH: mxdnwJFPrZUQDPuV' -H 'HOST: www.prothomalo.qtstage.io' -H 'Content-type: application/json' -s "$url" | jq -r '.[].external_id//null')
+    #echo "${RESP[*]}"
+    if [[ ${externalids[*]} = ${RESP[*]} ]]
+    then
+    echo "External-id ${externalids[*]} exists"
+    else
+    echo "External-id ${externalids[*]} doesnot exists"
+    fi
+done
+}
+export -f doit
+NOWT=$(date +"%T")
+NOW=$(date +"%Y-%m-%d")
+cat user-external-ids.txt | doit >> "output-${NOW}${NOWT}.txt"

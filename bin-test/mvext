@@ -1,0 +1,16 @@
+#!/bin/bash -x
+
+#two arg
+if [[ 2 -ne $# ]]; then
+    echo "Need two argument" >&2
+    exit 1
+fi
+# short hand of above if statement using group command 
+#[[ $# -ne 2 ]] && { echo "need two argument" >&2; exit 1 }
+
+for f in *"$1"; do #for f in *.txt;  read dir content with suffix test
+    base=$(basename "$f" "$1")
+    mv "$f" "${base}$2" #mv file-1.txt file-1.zip if $1=txt $2=zip
+done
+
+exit 0

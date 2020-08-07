@@ -1,0 +1,12 @@
+#!/bin/bash
+# return type of triangle
+if (( $# != 3 )); then
+    exit 1
+fi
+
+(( $1 == $2 && $2 == $3 )) && { echo "Equilateral"; exit 0; } 
+
+(( $1 == $2 )) || (( $2 == $3 )) || (( $3 == $1 )) && { echo "isoceles"; exit 0;}
+
+echo "scalene"
+exit 0

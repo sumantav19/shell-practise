@@ -1,0 +1,21 @@
+#!/bin/bash
+# compare length of two strings
+
+# required two arguments
+if [[ 2 -ne $# ]]; then
+    echo "Need two strings to compare lenght"
+    exit 1
+fi
+
+len_1=${#1}
+len_2=${#2}
+
+if [[ $len_1 -eq $len_2 ]]; then 
+    echo "Same length"
+elif [[ $len_1 -gt $len_2 ]]; then
+    echo "${1} is longer"
+else
+    echo "${2} is longer"
+fi
+
+exit 0

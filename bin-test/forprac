@@ -1,0 +1,12 @@
+#!/bin/bash
+
+for arg in $*;do
+    echo $arg
+done
+
+args=( $* )
+
+for (( i = 0 ; i < ${#args[@]} ; i++ )); do
+    echo ${args[i]}
+done
+

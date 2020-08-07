@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# create practise bash script and adds symlink to bin-test
+
+scriptdir="${HOME}/workspace/learning/shell"
+bindir="${HOME}/bin-test"
+declare -r command=$1
+declare -r shortcommand=$2
+filename="${scriptdir}/${command}"
+[[ ! shortcommand  ]] && symlink="${bindir}/${command}" || symlink="${bindir}/${shortcommand}"
+
+if [[ ! $command ]];then
+    echo "No command provided" >&2
+    exit 1
+fi
+
+if type $command >/dev/null 2>&1;then
+    echo "command exist" >&2
+    exit 1
+fi
+
+#create file
+touch "${filename}"
+
+#add executable permission
+chmod +x "${filename}"
+
+# add bin bash to file
+echo "#!/bin/bash" >> "${filename}"
+
+# create symlink
+ln -s "${filename}" "${symlink}"
+
+$EDITOR "${filename}"
+
+exit 0

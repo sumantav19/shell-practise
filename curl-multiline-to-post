@@ -1,0 +1,4 @@
+curl -XPOST http://localhost:9200/my_store/doc/_bulk --header "Content-Type:application/json" --data-binary @- << EOF
+{ "index": { "_id": 5 }}
+{ "price" : "10", "productID" : "XHDK-A-1293-#fJ3" ,"type":"product"}
+EOF

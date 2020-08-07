@@ -1,0 +1,7 @@
+#!/bin/bash
+base_dir=$(dirname $0)
+base_name=$(basename $0)
+echo $base_dir
+echo $base_name
+TOP_DIR=$(cd "$(dirname $0)/.."; pwd)
+echo $TOP_DIR

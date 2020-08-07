@@ -1,0 +1,24 @@
+#!/bin/bash
+echo $0
+
+# guess number
+
+declare -r random=$(( RANDOM % 100 ))
+declare -i guessed_number
+
+#printf "Guess the number\n"
+
+guessed=
+while [[ ! $guessed  ]]; do
+	read -n 3 -p "Guess the number\n" guessed_number
+	if (( guessed_number > random ));then
+		echo "Lower"
+	elif (( guessed_number < random ));then
+		echo "higher"
+	elif (( guessed_number == random ));then
+		echo "correct yay!"
+		guessed=yes
+	fi
+done
+
+exit 0

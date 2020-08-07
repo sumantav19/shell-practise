@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# The first line contains an integer,N.
+# lines follow, each containing a single N integer. 
+
+read lines
+total=0
+for (( i = 0; i < lines; i++));do
+    read  cur
+    total=$(( total + cur ))
+done
+
+printf %.3f $(echo "$total/$lines" | bc -l)
