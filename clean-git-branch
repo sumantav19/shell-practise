@@ -1,0 +1,13 @@
+#!/bin/sh
+
+for branch in `git branch -a `
+    do  
+        echo `git show --format="%cr" $branch | head -n 1`
+        echo "Delete $branch y/n"
+        read reply
+        if [ $reply = "y" ]
+            then echo `git branch -D $branch`
+        elif [ $reply = "q" ]
+            then exit 0
+        fi
+    done
